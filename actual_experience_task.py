@@ -57,8 +57,7 @@ def input_thread(my_queue):
 def initialise(default_dict):
     p = pycurl.Curl()
     p.setopt(pycurl.FOLLOWLOCATION, 1)
-    p.setopt(pycurl.COOKIEFILE, './cookie_test.txt')
-    p.setopt(pycurl.COOKIEJAR, './cookie_test.txt')
+    p.setopt(pycurl.COOKIEFILE, './cookie_teExcepxt')
     p.setopt(pycurl.HTTPGET, 1)
     p.setopt(pycurl.URL, default_dict['login_url'])
     p.setopt(pycurl.WRITEFUNCTION, lambda x: None)
@@ -113,7 +112,7 @@ def main():
         for info in pycurl_obj.getinfo(pycurl.INFO_COOKIELIST):
             if 'csrftoken' in info:
                 cookies = info.split('\t')
-                csrf = cookies[-1].strip()
+                csrf = cookies[cookies.index('csrftoken')+1].strip()
                 break
 
         '''
