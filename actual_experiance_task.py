@@ -1,3 +1,12 @@
+"""Usage: actual_experiance_task.py
+
+Arguments:
+
+Options:
+  -h --help
+  --version
+
+"""
 # todo https://github.com/docopt/docopt/blob/master/examples/config_file_example.py
 import json
 import thread
@@ -8,6 +17,8 @@ import pycurl
 import urllib
 
 # todo the config is valid json this could then be set in an external file
+from docopt import docopt
+
 json_config = '''{"login_url":"http://authenticationtest.herokuapp.com/login/",
 "post_url":"http://authenticationtest.herokuapp.com/login/ajax/",
 "test_url":"http://authenticationtest.herokuapp.com/login/", "username":"testuser",
@@ -139,4 +150,5 @@ def main():
 
 
 if __name__ == '__main__':
+    arguments = docopt(__doc__, version='0.0.1')
     main()
